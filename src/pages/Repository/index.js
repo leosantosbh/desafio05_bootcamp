@@ -27,18 +27,18 @@ export default class Repository extends Component {
         repo: {},
         issues: [],
         loading: true,
-        selectedOption: null,
+        selectedOption: 'Todos',
         page: 1,
     };
 
     handleChange = async selectedOption => {
         await this.setState({ selectedOption: selectedOption });
+        await this.setState({ page:1});
         this.carregaNovo();
     };
 
     handlePage = async action => {
         const { page } = this.state;
-        console.log(page);
         await this.setState({ page: action === 'back' ? page - 1 : page + 1 });
         this.carregaNovo();
     };
